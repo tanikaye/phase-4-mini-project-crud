@@ -1,30 +1,30 @@
 class SpicesController < ApplicationController
 
-  def index
-    spices = Spice.all
-    render json: spices
-  end
+def index
+  spice = Spice.all
+  render json: spice
+end
 
-  def create
-    spice = Spice.create(spice_params)
-    render json: spice, status: :created
-  end
+def create
+  spice = Spice.create(jango)
+  render json: spice, status: :created
+end
 
-  def update
-    spice = Spice.find(params[:id])
-    spice.update(spice_params)
-    render json: spice
-  end
+def update
+  spice = Spice.find_by(id: params[:id])
+  spice.update(jango)
+  render json: spice
+end
 
-  def destroy
-    spice = Spice.find(params[:id])
-    spice.destroy
-  end
+def destroy
+  spice = Spice.find(params[:id])
+  spice.destroy
+end
 
-  private
+private
 
-  def spice_params
-    params.permit(:title, :image, :description, :notes, :rating)
-  end
+def jango
+  params.permit(:title, :image, :description, :notes, :rating)
+end
 
 end
